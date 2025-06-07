@@ -1,1 +1,374 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATY Grup | Modern İnşaat Çözümleri</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://atygrup.com.tr/wp-content/uploads/2022/02/222-150x150.png">
+
+    <style>
+        /* Custom styles to complement Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Daha yumuşak bir siyah */
+            color: #EAEAEA;
+        }
+
+        .aurora-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(at 20% 25%, hsla(212, 45%, 25%, 0.3) 0px, transparent 50%),
+                radial-gradient(at 80% 25%, hsla(28, 65%, 45%, 0.25) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, hsla(355, 45%, 30%, 0.2) 0px, transparent 50%);
+            z-index: -1;
+            filter: blur(40px);
+        }
+
+        .hero-bg {
+            position: relative;
+            background-image: linear-gradient(rgba(18,18,18,0.7), rgba(18,18,18,0.7)), url('https://atygrup.com.tr/wp-content/uploads/2022/02/construction-concept-of-engineer-and-architect-working-at-construction-site.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .section-bg {
+            background-color: rgba(28, 28, 30, 0.5); /* Yarı saydam bölüm arka planı */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .accent-color {
+            color: #F97316; /* Tailwind Orange-500 */
+        }
+        
+        .btn-primary {
+            @apply bg-gradient-to-br from-orange-500 to-orange-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform transition-all duration-300;
+        }
+        .btn-primary:hover {
+            @apply scale-105 shadow-orange-500/30 shadow-xl;
+        }
+
+        /* Animation classes */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-element.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Navigation link hover effect */
+        .nav-link {
+            @apply relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:block after:bg-gradient-to-r after:from-orange-500 after:to-orange-400 after:rounded-full after:transition-all after:duration-300 after:ease-in-out after:-bottom-1 after:left-1/2 after:-translate-x-1/2;
+        }
+        .nav-link:hover:after, .nav-link.active:after {
+            @apply w-full;
+        }
+
+        /* Header scroll effect */
+        #header {
+            background-color: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        #header.scrolled {
+            @apply shadow-lg;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Form styling */
+        .form-input {
+            @apply w-full bg-gray-900/50 border border-gray-700 rounded-lg py-3 px-4 text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all;
+        }
+        
+        /* Glassmorphism Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s, transform 0.3s;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <div class="aurora-bg"></div>
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#anasayfa">
+                    <img src="https://atygrup.com.tr/wp-content/uploads/2022/02/222.png" alt="ATY Grup Logo" class="h-10 md:h-12 w-auto transition-transform duration-300 hover:scale-105">
+                </a>
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#anasayfa" class="text-slate-200 hover:text-white font-medium nav-link">Anasayfa</a>
+                    <a href="#hakkimizda" class="text-slate-200 hover:text-white font-medium nav-link">Hakkımızda</a>
+                    <a href="#projeler" class="text-slate-200 hover:text-white font-medium nav-link">Projelerimiz</a>
+                    <a href="#iletisim" class="text-slate-200 hover:text-white font-medium nav-link">İletişim</a>
+                </nav>
+                <a href="#iletisim" class="hidden lg:block btn-primary text-sm font-semibold py-2.5 px-6">
+                    Teklif Alın
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-slate-300 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-slate-900/90 backdrop-blur-md">
+            <div class="px-6 pb-4 pt-2 space-y-3">
+                <a href="#anasayfa" class="mobile-nav-link block text-slate-200 hover:text-orange-400 py-2">Anasayfa</a>
+                <a href="#hakkimizda" class="mobile-nav-link block text-slate-200 hover:text-orange-400 py-2">Hakkımızda</a>
+                <a href="#projeler" class="mobile-nav-link block text-slate-200 hover:text-orange-400 py-2">Projelerimiz</a>
+                <a href="#iletisim" class="mobile-nav-link block text-slate-200 hover:text-orange-400 py-2">İletişim</a>
+                <a href="#iletisim" class="mobile-nav-link block bg-orange-500 text-white font-semibold text-center mt-2 py-2 px-6 rounded-md shadow-md">Teklif Alın</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="anasayfa" class="hero-bg min-h-screen flex items-center pt-20">
+            <div class="container mx-auto px-6 text-center text-white">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight fade-in-element">
+                        <span class="accent-color">Geleceği</span> İnşa Ediyoruz,
+                        <span class="block mt-2">Hayalleri Gerçeğe Dönüştürüyoruz.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8 fade-in-element" style="transition-delay: 0.2s;">
+                        1997'den beri 25 yılı aşkın tecrübe ile güvenilir, sürdürülebilir ve çevre dostu yapılar tasarlıyoruz.
+                    </p>
+                    <div class="fade-in-element" style="transition-delay: 0.4s;">
+                        <a href="#projeler" class="btn-primary">Projelerimizi Keşfedin</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="hakkimizda" class="py-20 md:py-32">
+             <div class="container mx-auto px-6 section-bg rounded-2xl py-12">
+                <div class="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+                    <div class="fade-in-element">
+                        <img src="https://atygrup.com.tr/wp-content/uploads/2022/02/yellow-construction-crane-against-the-blue-sky-infrastructure-1024x1536.jpg" alt="Hakkımızda" class="rounded-xl shadow-2xl w-full h-auto object-cover max-h-[70vh]">
+                    </div>
+                    <div class="fade-in-element" style="transition-delay: 0.2s;">
+                        <h2 class="text-sm font-bold uppercase text-orange-400 mb-2">TARİHÇEMİZ VE DEĞERLERİMİZ</h2>
+                        <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">25 Yıllık Tecrübe ile Güvenin Adı</h3>
+                        <p class="text-slate-400 mb-4">1997 yılında başlayan yolculuğumuzda, sayısız projeyi teknik bilgi, adil iş yapma biçimi ve olağanüstü bir saygınlıkla tamamladık. Faaliyetlerimizde insan faktörünün en önemli unsur olduğu bilinciyle hareket ediyor, şeffaf, dürüst ve adil olmayı başlıca motivasyonumuz olarak görüyoruz.</p>
+                        <p class="text-slate-400 mb-8">İş ortaklarımıza, müşterilerimize ve tedarikçilerimize değer veren, uzun vadeli ilişkiler kurmaya kararlı bir ekibiz. Kaliteden ödün vermeden beklentileri aşmak için çalışıyoruz.</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-center">
+                            <div class="glass-card p-6">
+                                <span data-target="1000" class="counter-element text-4xl font-bold text-orange-400">0</span><span class="text-4xl font-bold text-orange-400">+</span>
+                                <p class="text-sm text-slate-400 mt-2">Tamamlanan Proje</p>
+                            </div>
+                            <div class="glass-card p-6">
+                                <span data-target="600" class="counter-element text-4xl font-bold text-orange-400">0</span><span class="text-4xl font-bold text-orange-400">+</span>
+                                <p class="text-sm text-slate-400 mt-2">Mutlu Müşteri</p>
+                            </div>
+                            <div class="glass-card p-6">
+                                <span data-target="25" class="counter-element text-4xl font-bold text-orange-400">0</span><span class="text-4xl font-bold text-orange-400">+</span>
+                                <p class="text-sm text-slate-400 mt-2">Yıllık Deneyim</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projeler" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16 fade-in-element">
+                    <h2 class="text-sm font-bold uppercase text-orange-400 mb-2">Örnek Çalışmalarımız</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Hayallerinizi Bizimle Tasarlayın</h3>
+                    <p class="text-slate-400">Vizyonunuzu gerçeğe dönüştürdüğümüz, gurur duyduğumuz projelerimizden bazıları.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Cards -->
+                    <a href="#" class="group relative overflow-hidden rounded-xl shadow-lg fade-in-element block">
+                        <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-15.png" alt="Proje 1" class="w-full h-96 object-cover transform transition-all duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white transform transition-transform duration-500 group-hover:-translate-y-2">
+                            <h4 class="text-2xl font-bold">Konut Projesi</h4>
+                            <p class="text-slate-300">Bayrampaşa, İstanbul</p>
+                        </div>
+                    </a>
+                    <a href="#" class="group relative overflow-hidden rounded-xl shadow-lg fade-in-element block" style="transition-delay: 0.1s;">
+                        <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-10.png" alt="Proje 2" class="w-full h-96 object-cover transform transition-all duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white transform transition-transform duration-500 group-hover:-translate-y-2">
+                            <h4 class="text-2xl font-bold">Ticari Bina</h4>
+                            <p class="text-slate-300">Esenler, İstanbul</p>
+                        </div>
+                    </a>
+                    <a href="#" class="group relative overflow-hidden rounded-xl shadow-lg fade-in-element block" style="transition-delay: 0.2s;">
+                        <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-27.png" alt="Proje 3" class="w-full h-96 object-cover transform transition-all duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white transform transition-transform duration-500 group-hover:-translate-y-2">
+                            <h4 class="text-2xl font-bold">Endüstriyel Tesis</h4>
+                            <p class="text-slate-300">İkitelli OSB, İstanbul</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="iletisim" class="py-20 md:py-32">
+             <div class="container mx-auto px-6 section-bg rounded-2xl py-12">
+                 <div class="text-center max-w-3xl mx-auto mb-16 fade-in-element">
+                    <h2 class="text-sm font-bold uppercase text-orange-400 mb-2">Bize Ulaşın</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Projeniz Hakkında Konuşalım</h3>
+                    <p class="text-slate-400">Daha fazla bilgiye veya yardıma mı ihtiyacınız var? Aşağıdaki formu doldurun veya iletişim bilgilerimizden bize ulaşın.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 md:gap-16">
+                    <div class="fade-in-element" style="transition-delay: 0.2s;">
+                        <div class="space-y-6">
+                             <div class="flex items-start space-x-4">
+                                <div class="bg-orange-500/10 p-3 rounded-lg text-orange-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
+                                <div><h4 class="font-semibold text-lg text-white">Adres</h4><p class="text-slate-400">Yenidoğan Mah. Abdi İpekçi Cad. NO:73/1 Bayrampaşa/İSTANBUL</p></div>
+                            </div>
+                             <div class="flex items-start space-x-4">
+                                <div class="bg-orange-500/10 p-3 rounded-lg text-orange-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+                                <div><h4 class="font-semibold text-lg text-white">E-posta</h4><p class="text-slate-400">info@atygrup.com.tr</p></div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-orange-500/10 p-3 rounded-lg text-orange-400"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
+                                <div><h4 class="font-semibold text-lg text-white">Telefon</h4><p class="text-slate-400">0 (552) 210 05 15</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fade-in-element"><form action="#" class="space-y-4"><input type="text" placeholder="Adınız Soyadınız" class="form-input"><input type="email" placeholder="E-posta Adresiniz" class="form-input"><input type="tel" placeholder="Telefon Numaranız" class="form-input"><textarea placeholder="Mesajınız..." rows="5" class="form-input"></textarea><button type="submit" class="btn-primary w-full">Mesajı Gönder</button></form></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black/50 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="flex flex-col items-center md:items-start"><img src="https://atygrup.com.tr/wp-content/uploads/2022/02/222.png" alt="ATY Grup Logo" class="h-12 w-auto mb-4"><p class="text-slate-500 max-w-xs">Çeyrek asırlık tecrübeyle geleceğin yapılarını güvenle inşa ediyoruz.</p></div>
+                <div>
+                    <h4 class="font-bold text-lg text-white mb-4">Hızlı Bağlantılar</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#anasayfa" class="text-slate-400 hover:text-orange-400 transition-colors">Anasayfa</a></li>
+                        <li><a href="#hakkimizda" class="text-slate-400 hover:text-orange-400 transition-colors">Hakkımızda</a></li>
+                        <li><a href="#projeler" class="text-slate-400 hover:text-orange-400 transition-colors">Projelerimiz</a></li>
+                        <li><a href="#iletisim" class="text-slate-400 hover:text-orange-400 transition-colors">İletişim</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg text-white mb-4">Sosyal Medya</h4>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="http://instagram.com/atygrupinsaat" target="_blank" class="text-slate-400 hover:text-orange-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.42 0-7.8 3.38-7.8 7.8s3.38 7.8 7.8 7.8 7.8-3.38 7.8-7.8S16.735 2 12.315 2zM1.803 9.815C1.803 5.4 5.215 2 9.815 2s7.992 3.4 7.992 7.815c0 4.413-3.58 7.992-7.992 7.992S1.803 14.228 1.803 9.815zM15.93 12c.165 0 .3-.135.3-.3V8.4c0-.165-.135-.3-.3-.3h-3.36c-.165 0-.3.135-.3.3v3.3c0 .165.135.3.3.3h3.36zM12 15.3c-1.815 0-3.3-1.485-3.3-3.3s1.485-3.3 3.3-3.3 3.3 1.485 3.3 3.3-1.485 3.3-3.3 3.3zM12 6.6c-2.97 0-5.4 2.43-5.4 5.4s2.43 5.4 5.4 5.4 5.4-2.43 5.4-5.4-2.43-5.4-5.4-5.4z" clip-rule="evenodd"></path></svg></a>
+                        <a href="#" class="text-slate-400 hover:text-orange-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98-3.56-.18-6.73-1.89-8.84-4.48-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.5 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"></path></svg></a>
+                        <a href="#" class="text-slate-400 hover:text-orange-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-slate-500 text-sm">
+                <p>Copyright © 2025 ATY Grup | Tüm Hakları Saklıdır. Gemini tarafından modernize edilmiştir.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            mobileNavLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+            // Header Scroll Effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Intersection Observer for Animations
+            const animatedElements = document.querySelectorAll('.fade-in-element');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        if (entry.target.classList.contains('counter-element')) {
+                            animateCounter(entry.target);
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Counter Animation
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.8 });
+            document.querySelectorAll('.counter-element').forEach(el => counterObserver.observe(el));
+
+            function animateCounter(element) {
+                const target = +element.getAttribute('data-target');
+                let current = 0;
+                const duration = 2000; // 2 seconds
+                const stepTime = Math.abs(Math.floor(duration / target));
+                const timer = setInterval(() => {
+                    current += 1;
+                    element.innerText = current.toLocaleString('tr-TR');
+                    if (current === target) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+
+            // Active Nav Link on Scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.addEventListener('scroll', () => {
+                let currentSection = '';
+                sections.forEach(section => {
+                    if (window.scrollY >= section.offsetTop - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
