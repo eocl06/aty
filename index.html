@@ -19,18 +19,18 @@
 
     <style>
         :root {
-            /* YENİ AÇIK TEMA RENK PALETİ */
-            --brand-light: #F8F9FA;         /* Ana Açık Arka Plan */
-            --brand-white: #FFFFFF;         /* Kart ve Bölüm Arka Planları */
-            --brand-primary-blue: #005A9C;   /* Ana Kurumsal Mavi (Güven Veren Ton) */
-            --brand-accent-orange: #F78719;  /* Vurgu ve CTA Turuncusu */
+            /* YENİ AÇIK TEMA RENK PALETİ (KONTRAST ARTIRILDI) */
+            --brand-light: #F1F5F9;          /* Ana Açık Arka Plan (Daha Belirgin) */
+            --brand-white: #FFFFFF;          /* Kart ve Bölüm Arka Planları */
+            --brand-primary-blue: #005A9C;  /* Ana Kurumsal Mavi (Güven Veren Ton) */
+            --brand-accent-orange: #F78719; /* Vurgu ve CTA Turuncusu */
             
             --text-primary: #0A0F19;         /* Ana Metin Rengi (Koyu Mavi/Siyah) */
             --text-secondary: #495057;       /* İkincil Metin Rengi (Gri) */
             --text-tertiary: #6C757D;        /* Üçüncül Metin Rengi (Açık Gri) */
             
-            --border-color: #DEE2E6;        /* Kenarlık Rengi */
-            --shadow-color-light: rgba(0, 90, 156, 0.1); /* Mavi tonlu hafif gölge */
+            --border-color: #DEE2E6;         /* Kenarlık Rengi */
+            --shadow-color-light: rgba(0, 90, 156, 0.08); /* Mavi tonlu daha hafif gölge */
             --shadow-color-strong: rgba(0, 90, 156, 0.15); /* Daha belirgin gölge */
         }
 
@@ -38,6 +38,10 @@
             font-family: 'Manrope', sans-serif;
             background-color: var(--brand-light);
             color: var(--text-secondary);
+        }
+        
+        body.mobile-menu-open {
+            overflow: hidden;
         }
 
         .hero-bg {
@@ -47,7 +51,7 @@
         }
         .hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(248, 249, 250, 0.9) 80%, var(--brand-light) 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(241, 245, 249, 0.9) 80%, var(--brand-light) 100%);
         }
         
         .elevated-card {
@@ -63,22 +67,15 @@
             box-shadow: 0 10px 25px var(--shadow-color-strong);
         }
         
-        /* BÖLÜMLER ARASI BOŞLUKLARI AZALTMAK İÇİN GÜNCELLENDİ */
         .section-container {
             width: 100%;
             margin-left: auto;
             margin-right: auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            padding-top: 4rem;      /* 5rem'den düşürüldü */
-            padding-bottom: 4rem;   /* 5rem'den düşürüldü */
+            padding: 4rem 2rem;
         }
         @media (min-width: 768px) {
             .section-container {
-                padding-left: 3rem;
-                padding-right: 3rem;
-                padding-top: 5rem;      /* 7rem'den düşürüldü */
-                padding-bottom: 5rem;   /* 7rem'den düşürüldü */
+                padding: 5rem 3rem;
             }
         }
 
@@ -128,10 +125,11 @@
         }
         .nav-link:hover::after, .nav-link.active::after { width: 60%; }
         
+        /* Revize Edilmiş Slider Stilleri */
         #projeler .swiper { width: 100%; height: auto; padding-bottom: 4rem; }
         #projeler .swiper-slide { height: auto; display: flex; }
         #projeler .swiper-slide > a { width: 100%; }
-        #projeler .swiper-pagination-bullet { background-color: var(--text-tertiary); width: 10px; height: 10px; opacity: 0.7; transition: all 0.3s ease; }
+        #projeler .swiper-pagination-bullet { background-color: var(--text-tertiary); width: 12px; height: 12px; opacity: 0.7; transition: all 0.3s ease; }
         #projeler .swiper-pagination-bullet-active { background-color: var(--brand-accent-orange); transform: scale(1.2); opacity: 1; }
         #projeler .swiper-button-next,
         #projeler .swiper-button-prev { color: var(--brand-accent-orange); transition: all 0.3s ease; }
@@ -146,42 +144,45 @@
 <body class="overflow-x-hidden">
 
     <header id="header" class="fixed top-0 left-0 right-0 z-50">
-        <div class="container mx-auto px-8 md:px-12 py-3 sm:py-4 md:py-5">
+        <div class="container mx-auto px-6 md:px-12 py-4">
             <div class="flex justify-between items-center">
                 <a href="#anasayfa"><img src="https://atygrup.com.tr/wp-content/uploads/2022/02/222.png" alt="ATY Grup Logo" class="h-10 sm:h-12 w-auto transition-transform duration-300 hover:scale-105"></a>
-                <nav class="hidden lg:flex items-center space-x-6 md:space-x-8 xl:space-x-12">
-                    <a href="#anasayfa" class="nav-link text-sm md:text-base">Anasayfa</a>
-                    <a href="#hakkimizda" class="nav-link text-sm md:text-base">Hakkımızda</a>
-                    <a href="#projeler" class="nav-link text-sm md:text-base">Projelerimiz</a>
-                    <a href="#iletisim" class="nav-link text-sm md:text-base">İletişim</a>
+                <nav class="hidden lg:flex items-center space-x-10">
+                    <a href="#anasayfa" class="nav-link text-base">Anasayfa</a>
+                    <a href="#hakkimizda" class="nav-link text-base">Hakkımızda</a>
+                    <a href="#projeler" class="nav-link text-base">Projelerimiz</a>
+                    <a href="#iletisim" class="nav-link text-base">İletişim</a>
                 </nav>
-                <a href="#iletisim" class="hidden lg:block inline-flex items-center justify-center font-bold px-6 py-2.5 md:py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 md:px-8 bg-gradient-to-br from-[var(--brand-accent-orange)] to-[#D57512] text-white ring-[#F78719]/50 hover:scale-105 hover:shadow-lg hover:shadow-[#F78719]/20 text-xs sm:text-sm">Teklif Alın</a>
-                <button id="mobile-menu-button" class="lg:hidden text-text-primary focus:outline-none"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
+                <a href="#iletisim" class="hidden lg:block inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 bg-gradient-to-br from-[var(--brand-accent-orange)] to-[#D57512] text-white ring-[#F78719]/50 hover:scale-105 hover:shadow-xl hover:shadow-[#F78719]/30 text-sm">Teklif Alın</a>
+                <button id="mobile-menu-button" class="lg:hidden text-text-primary focus:outline-none"><span class="material-icons-outlined text-3xl">menu</span></button>
             </div>
         </div>
         <div id="mobile-menu" class="hidden lg:hidden bg-brand-white/95 backdrop-blur-md border-t border-border-color">
-            <div class="px-8 md:px-12 pb-3 pt-2 space-y-2">
-                <a href="#anasayfa" class="mobile-nav-link block text-text-secondary hover:text-brand-primary-blue py-3 text-base">Anasayfa</a>
-                <a href="#hakkimizda" class="mobile-nav-link block text-text-secondary hover:text-brand-primary-blue py-3 text-base">Hakkımızda</a>
-                <a href="#projeler" class="mobile-nav-link block text-text-secondary hover:text-brand-primary-blue py-3 text-base">Projelerimiz</a>
-                <a href="#iletisim" class="mobile-nav-link block text-text-secondary hover:text-brand-primary-blue py-3 text-base">İletişim</a>
-                <a href="#iletisim" class="mobile-nav-link block bg-brand-accent-orange text-white font-semibold text-center mt-2 py-3 px-4 rounded-md shadow-md text-base">Teklif Alın</a>
+            <div class="px-6 md:px-12 pb-4 pt-2 space-y-1">
+                <a href="#anasayfa" class="mobile-nav-link flex items-center gap-4 text-text-secondary hover:text-brand-primary-blue py-3 text-base font-medium"><span class="material-icons-outlined text-brand-primary-blue">home</span> Anasayfa</a>
+                <a href="#hakkimizda" class="mobile-nav-link flex items-center gap-4 text-text-secondary hover:text-brand-primary-blue py-3 text-base font-medium"><span class="material-icons-outlined text-brand-primary-blue">business</span> Hakkımızda</a>
+                <a href="#projeler" class="mobile-nav-link flex items-center gap-4 text-text-secondary hover:text-brand-primary-blue py-3 text-base font-medium"><span class="material-icons-outlined text-brand-primary-blue">apartment</span> Projelerimiz</a>
+                <a href="#iletisim" class="mobile-nav-link flex items-center gap-4 text-text-secondary hover:text-brand-primary-blue py-3 text-base font-medium"><span class="material-icons-outlined text-brand-primary-blue">email</span> İletişim</a>
+                <a href="#iletisim" class="mobile-nav-link block bg-brand-accent-orange text-white font-semibold text-center mt-3 py-3 px-4 rounded-lg shadow-md text-base w-full">Teklif Alın</a>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="anasayfa" class="hero-bg min-h-[90vh] flex items-center justify-center pt-16 relative">
+        <section id="anasayfa" class="hero-bg min-h-screen flex items-center justify-center pt-20 relative">
             <div class="hero-overlay"></div>
-            <div class="container mx-auto px-8 md:px-12 text-center relative z-10">
+            <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
                 <div class="max-w-4xl lg:max-w-5xl mx-auto">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 leading-tight tracking-tight fade-in-up text-text-primary"> <span style="color: var(--brand-primary-blue);">Güven ve Vizyonla</span> Geleceği İnşa Ediyoruz
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-5 leading-tight tracking-tight text-text-primary fade-in-up">
+                        <span class="block text-brand-primary-blue text-3xl md:text-4xl font-semibold mb-2">Güven ve Vizyonla</span>
+                        Geleceği İnşa Ediyoruz
                     </h1>
-                    <p class="text-base sm:text-lg md:text-xl text-text-secondary max-w-3xl mx-auto mb-8 leading-relaxed fade-in-up" style="transition-delay: 0.2s;">
-                        1997'den bugüne, çeyrek asrı aşan tecrübemiz, sarsılmaz kalite anlayışımız ve yenilikçi vizyonumuzla, sadece yapılar değil, geleceğin simgelerini inşa ediyoruz.
+                    <p class="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto mb-10 leading-relaxed fade-in-up" style="transition-delay: 0.2s;">
+                        Çeyrek asrı aşan tecrübemiz, sarsılmaz kalite anlayışımız ve yenilikçi bakış açımızla, sadece yapılar değil, geleceğin simgelerini inşa ediyoruz.
                     </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 fade-in-up" style="transition-delay: 0.4s;"> <a href="#projeler" class="inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 sm:py-3 md:px-10 md:py-4 bg-gradient-to-br from-[var(--brand-accent-orange)] to-[#D57512] text-white ring-[#F78719]/50 hover:scale-105 hover:shadow-lg hover:shadow-[#F78719]/20 text-sm">Projelerimizi Keşfedin</a>
-                        <a href="#hakkimizda" class="inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg shadow-md transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 sm:py-3 md:px-10 md:py-4 bg-transparent border-2 border-brand-primary-blue text-brand-primary-blue ring-brand-primary-blue/50 hover:bg-brand-primary-blue hover:text-white hover:scale-105 text-sm">Hakkımızda <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 hidden sm:inline-block" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></a>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 fade-in-up" style="transition-delay: 0.4s;">
+                        <a href="#projeler" class="w-full sm:w-auto inline-flex items-center justify-center font-bold px-8 py-4 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 bg-gradient-to-br from-[var(--brand-accent-orange)] to-[#D57512] text-white ring-[#F78719]/50 hover:scale-105 hover:shadow-xl hover:shadow-[#F78719]/30 text-base">Projelerimizi Keşfedin</a>
+                        <a href="#hakkimizda" class="w-full sm:w-auto inline-flex items-center justify-center font-bold px-8 py-4 rounded-lg shadow-md transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 bg-transparent border-2 border-brand-primary-blue text-brand-primary-blue ring-brand-primary-blue/50 hover:bg-brand-primary-blue hover:text-white hover:scale-105 text-base">Hakkımızda <span class="material-icons-outlined ml-2 hidden sm:inline-block">arrow_forward</span></a>
                     </div>
                 </div>
             </div>
@@ -192,7 +193,13 @@
                 <div class="fade-in-up"><img src="https://atygrup.com.tr/wp-content/uploads/2022/02/yellow-construction-crane-against-the-blue-sky-infrastructure-1024x1536.jpg" alt="Hakkımızda" class="rounded-xl md:rounded-2xl shadow-xl w-full h-auto object-cover max-h-[70vh] lg:max-h-[80vh]"></div>
                 <div class="fade-in-up" style="transition-delay: 0.2s;">
                     <h2 class="text-sm font-bold uppercase tracking-wider text-brand-accent-orange mb-4">VİZYONUMUZ VE KÖKLERİMİZ</h2>
-                    <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-6 tracking-tight">Güven ve Kalite Üzerine Kurulu Miras</h3> <p class="text-base text-text-secondary mb-5 leading-relaxed">1997'den beri, projelerimizi üstün teknik bilgi, adil iş ahlakı ve sarsılmaz bir saygınlıkla tamamlıyoruz. Faaliyetlerimizin merkezine her zaman insanı koyarak; şeffaflık, dürüstlük ve adaleti en büyük motivasyon kaynağımız olarak benimsedik.</p> <p class="text-base text-text-secondary mb-8 leading-relaxed">İş ortaklarımız, müşterilerimiz ve tedarikçilerimizle kurduğumuz kalıcı ilişkiler, başarımızın temel taşıdır. Kaliteden asla ödün vermeden, beklentilerin ötesine geçmek için tutkuyla çalışıyoruz.</p> <div class="border-t border-border-color pt-8 grid grid-cols-3 gap-4 text-center"> <div>
+                    <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-6 tracking-tight leading-tight">Güven ve Kalite Üzerine Kurulu Miras</h3>
+                    <div class="space-y-5 max-w-xl text-base text-text-secondary leading-relaxed">
+                        <p>1997'den beri, projelerimizi üstün teknik bilgi, adil iş ahlakı ve sarsılmaz bir saygınlıkla tamamlıyoruz. Faaliyetlerimizin merkezine her zaman insanı koyarak; şeffaflık, dürüstlük ve adaleti en büyük motivasyon kaynağımız olarak benimsedik.</p>
+                        <p>İş ortaklarımız, müşterilerimiz ve tedarikçilerimizle kurduğumuz kalıcı ilişkiler, başarımızın temel taşıdır. Bu temel üzerine inşa ettiğimiz eserlerimizi keşfetmeye hazır olun.</p>
+                    </div>
+                    <div class="border-t border-border-color pt-8 mt-10 grid grid-cols-3 gap-4 text-center">
+                        <div>
                             <span data-target="1000" class="counter-element text-4xl md:text-5xl font-extrabold text-brand-primary-blue">0</span><span class="text-4xl md:text-5xl font-extrabold text-brand-primary-blue">+</span>
                             <p class="text-xs sm:text-sm text-text-tertiary mt-3 uppercase tracking-wider font-semibold">Proje</p>
                         </div>
@@ -212,75 +219,86 @@
         <section id="projeler" class="section-container overflow-hidden">
             <div class="text-center max-w-3xl mx-auto mb-12 fade-in-up">
                 <h2 class="text-sm font-bold uppercase tracking-wider text-brand-accent-orange mb-4">İmza Projelerimiz</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-text-primary mb-6 tracking-tight">Vizyonu Gerçeğe Dönüştüren Eserler</h3> <p class="text-base text-text-secondary leading-relaxed">Gururla tamamladığımız, her biri kalite ve estetiğin birer anıtı olan projelerimizden seçkiler.</p>
+                <h3 class="text-3xl md:text-4xl font-bold text-text-primary mb-6 tracking-tight leading-tight">Vizyonu Gerçeğe Dönüştüren Eserler</h3>
+                <p class="text-base text-text-secondary leading-relaxed max-w-2xl mx-auto">Gururla tamamladığımız, her biri kalite ve estetiğin birer anıtı olan projelerimizden seçkiler.</p>
             </div>
             <div class="swiper project-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block">
-                            <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz.png" alt="Sinpaş Marenegro Projesi" class="w-full h-80 sm:h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
+                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block h-full">
+                            <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz.png" alt="Sinpaş Marenegro Projesi" class="w-full h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full">
+                            <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full flex justify-between items-end">
                                 <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                     <h4 class="text-xl md:text-2xl font-bold">Sinpaş Marenegro Projesi</h4>
-                                    <p class="text-sm text-gray-300 mb-4 mt-1">Kilyos / Sarıyer, İstanbul</p>
-                                    <span class="inline-block border-b-2 border-brand-accent-orange pb-1 text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500">Projeyi İncele →</span>
+                                    <p class="text-sm text-gray-300 mt-1">Kilyos / Sarıyer, İstanbul</p>
+                                </div>
+                                <div class="bg-brand-accent-orange p-3 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out">
+                                    <span class="material-icons-outlined">arrow_forward</span>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block">
-                            <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-2.png" alt="Ortaköy Lüks Konut Projesi" class="w-full h-80 sm:h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
+                         <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block h-full">
+                            <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-2.png" alt="Ortaköy Lüks Konut Projesi" class="w-full h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full">
+                            <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full flex justify-between items-end">
                                 <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                     <h4 class="text-xl md:text-2xl font-bold">Ortaköy Lüks Konut Projesi</h4>
-                                    <p class="text-sm text-gray-300 mb-4 mt-1">Ortaköy, İstanbul</p>
-                                    <span class="inline-block border-b-2 border-brand-accent-orange pb-1 text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500">Projeyi İncele →</span>
+                                    <p class="text-sm text-gray-300 mt-1">Ortaköy, İstanbul</p>
+                                </div>
+                                <div class="bg-brand-accent-orange p-3 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out">
+                                    <span class="material-icons-outlined">arrow_forward</span>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block">
-                            <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-4.png" alt="T-Kart Teknik Kart Fabrikası" class="w-full h-80 sm:h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full">
-                                <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                    <h4 class="text-xl md:text-2xl font-bold">T-Kart Teknik Kart Fabrikası</h4>
-                                    <p class="text-sm text-gray-300 mb-4 mt-1">İstanbul</p>
-                                    <span class="inline-block border-b-2 border-brand-accent-orange pb-1 text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500">Projeyi İncele →</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block h-full">
+                           <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-4.png" alt="T-Kart Teknik Kart Fabrikası" class="w-full h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
+                           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                           <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full flex justify-between items-end">
+                               <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                   <h4 class="text-xl md:text-2xl font-bold">T-Kart Teknik Kart Fabrikası</h4>
+                                   <p class="text-sm text-gray-300 mt-1">İstanbul</p>
+                               </div>
+                               <div class="bg-brand-accent-orange p-3 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out">
+                                   <span class="material-icons-outlined">arrow_forward</span>
+                               </div>
+                           </div>
+                       </a>
+                   </div>
                     <div class="swiper-slide">
-                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block">
-                            <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-14.png" alt="Spine Tower" class="w-full h-80 sm:h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full">
-                                <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                    <h4 class="text-xl md:text-2xl font-bold">Spine Tower</h4>
-                                    <p class="text-sm text-gray-300 mb-4 mt-1">Maslak, İstanbul</p>
-                                    <span class="inline-block border-b-2 border-brand-accent-orange pb-1 text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500">Projeyi İncele →</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block h-full">
+                           <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-14.png" alt="Spine Tower" class="w-full h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
+                           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                           <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full flex justify-between items-end">
+                               <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                   <h4 class="text-xl md:text-2xl font-bold">Spine Tower</h4>
+                                   <p class="text-sm text-gray-300 mt-1">Maslak, İstanbul</p>
+                               </div>
+                               <div class="bg-brand-accent-orange p-3 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out">
+                                   <span class="material-icons-outlined">arrow_forward</span>
+                               </div>
+                           </div>
+                       </a>
+                   </div>
                     <div class="swiper-slide">
-                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block">
-                            <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-28.png" alt="İFM Halk Bankası" class="w-full h-80 sm:h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full">
-                                <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                    <h4 class="text-xl md:text-2xl font-bold">İFM Halk Bankası</h4>
-                                    <p class="text-sm text-gray-300 mb-4 mt-1">Ataşehir, İstanbul</p>
-                                    <span class="inline-block border-b-2 border-brand-accent-orange pb-1 text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500">Projeyi İncele →</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block h-full">
+                           <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-28.png" alt="İFM Halk Bankası" class="w-full h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
+                           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                           <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full flex justify-between items-end">
+                               <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                   <h4 class="text-xl md:text-2xl font-bold">İFM Halk Bankası</h4>
+                                   <p class="text-sm text-gray-300 mt-1">Ataşehir, İstanbul</p>
+                               </div>
+                               <div class="bg-brand-accent-orange p-3 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out">
+                                   <span class="material-icons-outlined">arrow_forward</span>
+                               </div>
+                           </div>
+                       </a>
+                   </div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev"></div>
@@ -291,15 +309,15 @@
         <section id="iletisim" class="section-container bg-brand-white">
             <div class="container mx-auto">
                 <div class="text-center max-w-3xl mx-auto mb-12 fade-in-up">
-                    <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl">
+                    <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl leading-tight">
                         <span style="color: var(--brand-primary-blue);">Birlikte</span> Harikalar Yaratalım
                     </h2>
                     <p class="mt-4 text-lg leading-8 text-text-secondary">
-                        Bir fikriniz mi var veya projeniz hakkında konuşmak mı istiyorsunuz? Aşağıdaki bilgilerden bize ulaşın ya da formu doldurun, ekibimiz en kısa sürede sizinle iletişime geçsin.
+                        Bir fikriniz mi var veya projeniz hakkında konuşmak mı istiyorsunuz? Bize ulaşın, ekibimiz en kısa sürede sizinle iletişime geçsin.
                     </p>
                 </div>
 
-                <div class="grid lg:grid-cols-5 gap-12">
+                <div class="grid lg:grid-cols-5 gap-y-12 gap-x-16">
                     <div class="lg:col-span-2 w-full flex flex-col space-y-8 fade-in-up" style="transition-delay: 0.2s;">
                         <h3 class="text-2xl font-bold text-text-primary border-l-4 border-brand-accent-orange pl-4">İletişim Bilgileri</h3>
                         <div class="flex items-start gap-5">
@@ -333,7 +351,9 @@
                     </div>
 
                     <div class="lg:col-span-3 w-full elevated-card p-8 md:p-10 fade-in-up" style="transition-delay: 0.4s;">
-                        <h3 class="text-2xl font-bold text-text-primary mb-6 text-center">Bize Mesaj Gönderin</h3> <form action="#" class="space-y-5"> <div>
+                        <h3 class="text-2xl font-bold text-text-primary mb-6 text-center">Bize Mesaj Gönderin</h3>
+                        <form action="#" class="space-y-4 md:space-y-5">
+                            <div>
                                 <label for="name" class="block text-sm font-semibold leading-6 text-text-secondary mb-2">Adınız Soyadınız</label>
                                 <input type="text" name="name" id="name" placeholder="Adınız ve soyadınız" class="form-input">
                             </div>
@@ -350,9 +370,10 @@
                                 <textarea name="message" id="message" rows="5" placeholder="Projenizden veya sorunuzdan bahsedin..." class="form-input"></textarea>
                             </div>
                             <div>
-                                <button type="submit" class="w-full inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 sm:py-3 md:px-10 md:py-4 bg-gradient-to-br from-[var(--brand-accent-orange)] to-[#D57512] text-white ring-[#F78719]/50 hover:scale-105 hover:shadow-lg hover:shadow-[#F78719]/20 text-lg">
+                                <button type="submit" class="w-full inline-flex items-center justify-center font-bold px-8 py-4 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 bg-gradient-to-br from-[var(--brand-accent-orange)] to-[#D57512] text-white ring-[#F78719]/50 hover:scale-105 hover:shadow-xl hover:shadow-[#F78719]/30 text-lg">
                                     Mesajı Gönder
                                 </button>
+                                <p class="text-center text-xs text-text-tertiary mt-4">Genellikle 1 iş günü içinde dönüş yapıyoruz.</p>
                             </div>
                         </form>
                     </div>
@@ -361,10 +382,16 @@
         </section>
     </main>
 
+    <a href="#iletisim" class="lg:hidden fixed bottom-5 right-5 z-40 bg-gradient-to-br from-[var(--brand-accent-orange)] to-[#D57512] text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-110 flex items-center gap-2">
+        <span class="material-icons-outlined">request_quote</span>
+    </a>
+
     <footer class="bg-brand-white border-t border-border-color pt-12 pb-8">
-        <div class="container mx-auto px-8 md:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-y-8 md:gap-x-8 text-center md:text-left"> <div class="md:col-span-3 flex flex-col items-center md:items-start">
-                    <img src="https://atygrup.com.tr/wp-content/uploads/2022/02/222.png" alt="ATY Grup Logo" class="h-12 w-auto mb-5"> <p class="text-sm text-text-tertiary max-w-md leading-relaxed">Çeyrek asırlık tecrübe, yenilikçi vizyon ve sarsılmaz kalite anlayışıyla geleceğin yapılarını güvenle inşa ediyoruz.</p>
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-y-8 md:gap-x-8 text-center md:text-left">
+                <div class="md:col-span-3 flex flex-col items-center md:items-start">
+                    <img src="https://atygrup.com.tr/wp-content/uploads/2022/02/222.png" alt="ATY Grup Logo" class="h-12 w-auto mb-5">
+                    <p class="text-sm text-text-tertiary max-w-md leading-relaxed">Tecrübe, vizyon ve kaliteyle geleceğin yapılarını güvenle inşa ediyoruz.</p>
                 </div>
                 <div class="md:col-span-2">
                     <h4 class="font-bold text-base text-text-primary mb-5">Site Haritası</h4>
@@ -384,7 +411,8 @@
                     </div>
                 </div>
             </div>
-            <div class="border-t border-border-color mt-12 pt-8 text-center text-xs text-text-tertiary"> <p>Copyright © 2025 ATY Grup | Tüm Hakları Saklıdır.</p>
+            <div class="border-t border-border-color mt-12 pt-8 text-center text-xs text-text-tertiary">
+                <p>Copyright © 2025 ATY Grup | Tüm Hakları Saklıdır.</p>
             </div>
         </div>
     </footer>
@@ -392,12 +420,24 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu
+            // Mobile Menu & Scroll Lock
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            mobileNavLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+            
+            function toggleMenu() {
+                mobileMenu.classList.toggle('hidden');
+                document.body.classList.toggle('mobile-menu-open');
+            }
+
+            mobileMenuButton.addEventListener('click', toggleMenu);
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMenu();
+                    }
+                });
+            });
 
             // Header Scroll Effect
             const header = document.getElementById('header');
@@ -465,7 +505,7 @@
                 });
             });
 
-            // Swiper JS for Projects with new settings
+            // Swiper JS for Projects (Revize Edilmiş Mobil Ayarları)
             const swiper = new Swiper('.project-swiper', {
                 loop: true,
                 grabCursor: true,
@@ -474,15 +514,18 @@
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true,
                 },
-                slidesPerView: 1.2,
+                // Mobil öncelikli ayarlar
+                slidesPerView: 1,
                 spaceBetween: 20,
                 centeredSlides: true,
                 breakpoints: {
+                    // 768px ve üzeri için ayarlar
                     768: {
                         slidesPerView: 2,
                         spaceBetween: 30,
                         centeredSlides: false,
                     },
+                    // 1024px ve üzeri için ayarlar
                     1024: {
                         slidesPerView: 3,
                         spaceBetween: 40,
