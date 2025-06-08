@@ -21,7 +21,7 @@
         :root {
             --brand-dark: #0A0F19;
             --brand-dark-secondary: #192A45; 
-            --brand-accent: #FF6B00;
+            --brand-accent: #F78719; /* Daha profesyonel kehribar tonu */
             --text-primary: #FFFFFF;
             --text-secondary: #C9D1D9;
             --text-tertiary: #8B949E;
@@ -37,9 +37,9 @@
         .aurora-bg {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background-image:
-                radial-gradient(at 10% 20%, hsla(28, 90%, 50%, 0.1) 0px, transparent 50%),
+                radial-gradient(at 10% 20%, hsla(28, 80%, 50%, 0.1) 0px, transparent 50%),
                 radial-gradient(at 85% 30%, hsla(220, 50%, 25%, 0.15) 0px, transparent 50%), 
-                radial-gradient(at 50% 90%, hsla(28, 80%, 45%, 0.08) 0px, transparent 50%);
+                radial-gradient(at 50% 90%, hsla(28, 70%, 45%, 0.08) 0px, transparent 50%);
             z-index: -1;
             filter: blur(90px);
         }
@@ -64,63 +64,42 @@
         .glass-card:hover {
             background: linear-gradient(135deg, rgba(30, 38, 51, 0.5), rgba(30, 38, 51, 0.2));
             transform: translateY(-5px);
-            border-color: rgba(255, 107, 0, 0.4);
+            border-color: rgba(247, 135, 25, 0.4);
             box-shadow: 0 15px 25px -10px rgba(0,0,0,0.3);
         }
         
-        /* Converted @apply to plain CSS for compatibility and reuse */
         .section-container {
             width: 100%;
             margin-left: auto;
             margin-right: auto;
-            padding-left: 2rem; /* 32px */
-            padding-right: 2rem; /* 32px */
-            padding-top: 5rem; /* 80px */
-            padding-bottom: 5rem; /* 80px */
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
         }
         @media (min-width: 768px) {
             .section-container {
-                padding-left: 3rem; /* 48px */
-                padding-right: 3rem; /* 48px */
-                padding-top: 7rem; /* 112px */
-                padding-bottom: 7rem; /* 112px */
-            }
-        }
-        @media (min-width: 1024px) {
-            .section-container {
-                padding-top: 8rem; /* 128px */
-                padding-bottom: 8rem; /* 128px */
-            }
-        }
-        @media (min-width: 1280px) {
-            .section-container {
-                padding-top: 10rem; /* 160px */
-                padding-bottom: 10rem; /* 160px */
+                padding-left: 3rem;
+                padding-right: 3rem;
+                padding-top: 7rem;
+                padding-bottom: 7rem;
             }
         }
 
         .form-input {
-            display: block;
-            width: 100%;
+            display: block; width: 100%;
             background-color: var(--brand-dark-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 0.5rem; /* rounded-lg */
-            padding: 0.75rem 1rem; /* py-3 px-4 */
-            font-size: 1rem; /* text-base */
-            line-height: 1.5rem;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-size: 1rem; line-height: 1.5rem;
             color: var(--text-secondary);
             transition: all 0.2s ease-in-out;
         }
-        .form-input::placeholder {
-            color: var(--text-secondary);
-            opacity: 0.6;
-        }
+        .form-input::placeholder { color: var(--text-secondary); opacity: 0.6; }
         .form-input:focus {
             outline: none;
-            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-            --tw-ring-color: var(--brand-accent);
+            box-shadow: 0 0 0 2px var(--brand-dark), 0 0 0 4px var(--brand-accent);
             border-color: transparent;
         }
 
@@ -128,14 +107,9 @@
             opacity: 0; transform: translateY(30px);
             transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        .fade-in-up.is-visible {
-            opacity: 1; transform: translateY(0);
-        }
+        .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
 
-        #header {
-            background-color: transparent;
-            transition: all 0.3s ease-in-out;
-        }
+        #header { background-color: transparent; transition: all 0.3s ease-in-out; }
         #header.scrolled {
             background-color: rgba(10, 15, 25, 0.7);
             backdrop-filter: blur(10px);
@@ -144,53 +118,30 @@
         }
 
         .nav-link {
-            position: relative;
-            font-weight: 600; /* font-semibold */
+            position: relative; font-weight: 600;
             color: var(--text-secondary);
             transition: color 0.3s;
         }
         .nav-link:hover { color: var(--text-primary); }
         .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px; /* h-0.5 */
-            display: block;
+            content: ''; position: absolute; width: 0; height: 2px; display: block;
             background-color: var(--brand-accent);
-            border-radius: 9999px; /* rounded-full */
+            border-radius: 9999px;
             transition: width 0.3s ease-in-out;
-            bottom: -6px; /* -bottom-1.5 */
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: -6px; left: 50%; transform: translateX(-50%);
         }
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
-        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
         
-        #projeler .swiper {
-            width: 100%; height: auto; padding-bottom: 4rem; 
-        }
-        #projeler .swiper-slide {
-            height: auto; display: flex;
-        }
-        #projeler .swiper-slide > a {
-            width: 100%;
-        }
-        #projeler .swiper-pagination-bullet {
-            background-color: var(--text-tertiary); width: 10px; height: 10px; opacity: 0.7; transition: all 0.3s ease;
-        }
-        #projeler .swiper-pagination-bullet-active {
-            background-color: var(--brand-accent); transform: scale(1.2); opacity: 1;
-        }
+        #projeler .swiper { width: 100%; height: auto; padding-bottom: 4rem; }
+        #projeler .swiper-slide { height: auto; display: flex; }
+        #projeler .swiper-slide > a { width: 100%; }
+        #projeler .swiper-pagination-bullet { background-color: var(--text-tertiary); width: 10px; height: 10px; opacity: 0.7; transition: all 0.3s ease; }
+        #projeler .swiper-pagination-bullet-active { background-color: var(--brand-accent); transform: scale(1.2); opacity: 1; }
         #projeler .swiper-button-next,
-        #projeler .swiper-button-prev {
-            color: var(--brand-accent); transform: scale(0.8); transition: all 0.3s ease;
-        }
+        #projeler .swiper-button-prev { color: var(--brand-accent); transition: all 0.3s ease; }
         #projeler .swiper-button-next:hover,
-        #projeler .swiper-button-prev:hover {
-            transform: scale(1);
-        }
-        @media (max-width: 640px) {
+        #projeler .swiper-button-prev:hover { transform: scale(1.1); }
+        @media (max-width: 767px) {
             #projeler .swiper-button-next,
             #projeler .swiper-button-prev {
                 display: none;
@@ -211,7 +162,7 @@
                     <a href="#projeler" class="nav-link text-sm md:text-base">Projelerimiz</a>
                     <a href="#iletisim" class="nav-link text-sm md:text-base">İletişim</a>
                 </nav>
-                <a href="#iletisim" class="hidden lg:block inline-flex items-center justify-center font-bold px-6 py-2.5 md:py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 md:px-8 bg-gradient-to-br from-orange-500 to-orange-700 text-white ring-orange-500/50 hover:scale-105 hover:shadow-brand-accent/30 hover:shadow-2xl text-xs sm:text-sm">Teklif Alın</a>
+                <a href="#iletisim" class="hidden lg:block inline-flex items-center justify-center font-bold px-6 py-2.5 md:py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 md:px-8 bg-gradient-to-br from-[var(--brand-accent)] to-[#D57512] text-white ring-[#F78719]/50 hover:scale-105 hover:shadow-lg hover:shadow-[#F78719]/20 text-xs sm:text-sm">Teklif Alın</a>
                 <button id="mobile-menu-button" class="lg:hidden text-text-secondary focus:outline-none"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
             </div>
         </div>
@@ -238,7 +189,7 @@
                         1997'den bugüne, çeyrek asrı aşan tecrübemiz, sarsılmaz kalite anlayışımız ve yenilikçi vizyonumuzla, sadece yapılar değil, geleceğin simgelerini inşa ediyoruz.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 fade-in-up" style="transition-delay: 0.4s;">
-                        <a href="#projeler" class="inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 sm:py-3 md:px-10 md:py-4 bg-gradient-to-br from-orange-500 to-orange-700 text-white ring-orange-500/50 hover:scale-105 hover:shadow-brand-accent/30 hover:shadow-2xl text-sm">Projelerimizi Keşfedin</a>
+                        <a href="#projeler" class="inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 sm:py-3 md:px-10 md:py-4 bg-gradient-to-br from-[var(--brand-accent)] to-[#D57512] text-white ring-[#F78719]/50 hover:scale-105 hover:shadow-lg hover:shadow-[#F78719]/20 text-sm">Projelerimizi Keşfedin</a>
                         <a href="#hakkimizda" class="inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 sm:py-3 md:px-10 md:py-4 bg-transparent border-2 border-brand-accent text-brand-accent ring-brand-accent/50 hover:bg-brand-accent hover:text-white hover:scale-105 text-sm">Hakkımızda <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 hidden sm:inline-block" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></a>
                     </div>
                 </div>
@@ -271,13 +222,12 @@
             </div>
         </section>
 
-        <section id="projeler" class="section-container bg-brand-dark-secondary !py-20 md:!py-28">
+        <section id="projeler" class="section-container !py-20 md:!py-28 overflow-hidden">
             <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
                 <h2 class="text-sm font-bold uppercase tracking-wider text-brand-accent mb-4">İmza Projelerimiz</h2>
                 <h3 class="text-3xl md:text-4xl font-bold text-text-primary mb-8 tracking-tight">Vizyonu Gerçeğe Dönüştüren Eserler</h3>
                 <p class="text-base text-text-secondary leading-relaxed">Gururla tamamladığımız, her biri kalite ve estetiğin birer anıtı olan projelerimizden seçkiler.</p>
             </div>
-            
             <div class="swiper project-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -319,8 +269,33 @@
                             </div>
                         </a>
                     </div>
+                    <div class="swiper-slide">
+                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block">
+                            <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-14.png" alt="Spine Tower" class="w-full h-80 sm:h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full">
+                                <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h4 class="text-xl md:text-2xl font-bold">Spine Tower</h4>
+                                    <p class="text-sm text-text-tertiary mb-4 mt-1">Maslak, İstanbul</p>
+                                    <span class="inline-block border-b-2 border-brand-accent pb-1 text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500">Projeyi İncele →</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#" class="group relative overflow-hidden rounded-2xl shadow-lg block">
+                            <img src="https://atygrup.com.tr/wp-content/uploads/2022/03/Adsiz-28.png" alt="İFM Halk Bankası" class="w-full h-80 sm:h-96 object-cover transform transition-all duration-700 ease-in-out group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white w-full">
+                                <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h4 class="text-xl md:text-2xl font-bold">İFM Halk Bankası</h4>
+                                    <p class="text-sm text-text-tertiary mb-4 mt-1">Ataşehir, İstanbul</p>
+                                    <span class="inline-block border-b-2 border-brand-accent pb-1 text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500">Projeyi İncele →</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
@@ -341,7 +316,6 @@
                 <div class="flex flex-col items-center gap-y-16">
                     <div class="w-full max-w-2xl flex flex-col justify-center space-y-8 fade-in-up" style="transition-delay: 0.2s;">
                         <h3 class="text-2xl font-bold text-text-primary border-l-4 border-brand-accent pl-4">İletişim Bilgileri</h3>
-                        
                         <div class="flex items-start gap-5">
                             <span class="material-icons-outlined text-3xl text-brand-accent mt-1">location_on</span>
                             <div>
@@ -349,7 +323,6 @@
                                 <p class="text-text-tertiary">Barbaros Mah. Begonya Sk. Nidakule Ataşehir Batı, No: 3/28, Ataşehir, İstanbul</p>
                             </div>
                         </div>
-
                         <div class="flex items-start gap-5">
                             <span class="material-icons-outlined text-3xl text-brand-accent mt-1">phone</span>
                             <div>
@@ -357,7 +330,6 @@
                                 <a href="tel:+905522100515" class="text-text-tertiary hover:text-brand-accent transition-colors">0 (552) 210 05 15</a>
                             </div>
                         </div>
-
                         <div class="flex items-start gap-5">
                             <span class="material-icons-outlined text-3xl text-brand-accent mt-1">email</span>
                             <div>
@@ -365,7 +337,6 @@
                                 <a href="mailto:info@atygrup.com.tr" class="text-text-tertiary hover:text-brand-accent transition-colors">info@atygrup.com.tr</a>
                             </div>
                         </div>
-                        
                         <div class="flex items-start gap-5">
                             <span class="material-icons-outlined text-3xl text-brand-accent mt-1">schedule</span>
                             <div>
@@ -395,7 +366,7 @@
                                 <textarea name="message" id="message" rows="5" placeholder="Projenizden veya sorunuzdan bahsedin..." class="form-input"></textarea>
                             </div>
                             <div>
-                                <button type="submit" class="w-full inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 sm:py-3 md:px-10 md:py-4 bg-gradient-to-br from-orange-500 to-orange-700 text-white ring-orange-500/50 hover:scale-105 hover:shadow-brand-accent/30 hover:shadow-2xl text-lg">
+                                <button type="submit" class="w-full inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 sm:px-8 sm:py-3 md:px-10 md:py-4 bg-gradient-to-br from-[var(--brand-accent)] to-[#D57512] text-white ring-[#F78719]/50 hover:scale-105 hover:shadow-lg hover:shadow-[#F78719]/20 text-lg">
                                     Mesajı Gönder
                                 </button>
                             </div>
@@ -425,9 +396,9 @@
                 <div>
                     <h4 class="font-bold text-base text-text-primary mb-5">Bizi Takip Edin</h4>
                     <div class="flex justify-center md:justify-start space-x-5">
-                         <a href="http://instagram.com/atygrupinsaat" target="_blank" class="text-text-tertiary hover:text-brand-accent transition-transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.42 0-7.8 3.38-7.8 7.8s3.38 7.8 7.8 7.8 7.8-3.38 7.8-7.8S16.735 2 12.315 2zM1.803 9.815C1.803 5.4 5.215 2 9.815 2s7.992 3.4 7.992 7.815c0 4.413-3.58 7.992-7.992 7.992S1.803 14.228 1.803 9.815zM15.93 12c.165 0 .3-.135.3-.3V8.4c0-.165-.135-.3-.3-.3h-3.36c-.165 0-.3.135-.3.3v3.3c0 .165.135.3.3.3h3.36zM12 15.3c-1.815 0-3.3-1.485-3.3-3.3s1.485-3.3 3.3-3.3 3.3 1.485 3.3 3.3-1.485 3.3-3.3 3.3zM12 6.6c-2.97 0-5.4 2.43-5.4 5.4s2.43 5.4 5.4 5.4 5.4-2.43 5.4-5.4-2.43-5.4-5.4-5.4z" clip-rule="evenodd"></path></svg></a>
-                         <a href="#" class="text-text-tertiary hover:text-brand-accent transition-transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98-3.56-.18-6.73-1.89-8.84-4.48-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.5 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"></path></svg></a>
-                         <a href="#" class="text-text-tertiary hover:text-brand-accent transition-transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg></a>
+                         <a href="http://instagram.com/atygrupinsaat" target="_blank" class="text-text-tertiary hover:text-brand-accent transition-transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c-4.42 0-7.8 3.38-7.8 7.8s3.38 7.8 7.8 7.8 7.8-3.38 7.8-7.8S16.735 2 12.315 2zM1.803 9.815C1.803 5.4 5.215 2 9.815 2s7.992 3.4 7.992 7.815c0 4.413-3.58 7.992-7.992 7.992S1.803 14.228 1.803 9.815zM15.93 12c.165 0 .3-.135.3-.3V8.4c0-.165-.135-.3-.3-.3h-3.36c-.165 0-.3.135-.3.3v3.3c0 .165.135.3.3.3h3.36zM12 15.3c-1.815 0-3.3-1.485-3.3-3.3s1.485-3.3 3.3-3.3 3.3 1.485 3.3 3.3-1.485 3.3-3.3 3.3zM12 6.6c-2.97 0-5.4 2.43-5.4 5.4s2.43 5.4 5.4 5.4 5.4-2.43 5.4-5.4-2.43-5.4-5.4-5.4z" clip-rule="evenodd"></path></svg></a>
+                         <a href="#" class="text-text-tertiary hover:text-brand-accent transition-transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98-3.56-.18-6.73-1.89-8.84-4.48-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.5 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"></path></svg></a>
+                         <a href="#" class="text-text-tertiary hover:text-brand-accent transition-transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg></a>
                     </div>
                 </div>
             </div>
@@ -479,19 +450,19 @@
             function animateCounter(element) {
                 const target = +element.getAttribute('data-target');
                 const duration = 2000;
-                const frameDuration = 1000 / 60;
-                const totalFrames = Math.round(duration / frameDuration);
-                let frame = 0;
+                let start = 0;
+                const stepTime = 20;
+                const totalSteps = duration / stepTime;
+                const increment = target / totalSteps;
                 const counter = setInterval(() => {
-                    frame++;
-                    const progress = frame / totalFrames;
-                    const currentCount = Math.round(target * progress);
-                    element.innerText = currentCount.toLocaleString('tr-TR');
-                    if (frame === totalFrames) {
-                        clearInterval(counter);
+                    start += increment;
+                    if (start >= target) {
                         element.innerText = target.toLocaleString('tr-TR');
+                        clearInterval(counter);
+                    } else {
+                        element.innerText = Math.ceil(start).toLocaleString('tr-TR');
                     }
-                }, frameDuration);
+                }, stepTime);
             }
 
             // Active Nav Link on Scroll
@@ -513,23 +484,38 @@
                 });
             });
 
-            // Swiper JS for Projects
+            // Swiper JS for Projects with new settings
             const swiper = new Swiper('.project-swiper', {
                 loop: true,
                 grabCursor: true,
-                spaceBetween: 30,
                 autoplay: {
-                  delay: 4000,
-                  disableOnInteraction: false,
-                  pauseOnMouseEnter: true,
+                    delay: 4000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
                 },
+                slidesPerView: 1.2,
+                spaceBetween: 20,
+                centeredSlides: true,
                 breakpoints: {
-                    640: { slidesPerView: 1, spaceBetween: 20 },
-                    768: { slidesPerView: 2, spaceBetween: 30 },
-                    1024: { slidesPerView: 3, spaceBetween: 40 },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                        centeredSlides: false,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                        centeredSlides: false,
+                    },
                 },
-                pagination: { el: '.swiper-pagination', clickable: true },
-                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
             });
         });
     </script>
